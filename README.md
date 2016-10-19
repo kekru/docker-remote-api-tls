@@ -29,25 +29,25 @@ The configuration works great with [fabric8io's Docker Maven Plugin](https://git
 Here is a simple example configuration, where /home/me/my/cert/dir contains `cert.pem`, `key.pem` and `ca.pem` (= ca-cert.pem from above).
 ```xml
 <build>
-		<plugins>
-			<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.16.8</version>
-				<configuration>
-					<images>
-						<image>
-							<alias>my-httpd</alias>
-							<name>httpd</name>
-						</image>
-					</images>
-					<dockerHost>https://my-website.org:2376</dockerHost>
-					<certPath>/home/me/my/cert/dir</certPath>
-					<useColor>true</useColor>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<plugins>
+		<plugin>
+			<groupId>io.fabric8</groupId>
+			<artifactId>docker-maven-plugin</artifactId>
+			<version>0.16.8</version>
+			<configuration>
+				<images>
+					<image>
+						<alias>my-httpd</alias>
+						<name>httpd</name>
+					</image>
+				</images>
+				<dockerHost>https://my-website.org:2376</dockerHost>
+				<certPath>/home/me/my/cert/dir</certPath>
+				<useColor>true</useColor>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
 ```
 
 `mvn docker:start` starts the httpd via the remote API.
