@@ -22,6 +22,9 @@ Now run the container:
 
 Your Docker Remote API is available on port 2376 via https. The client needs to authenticate via `cert.pem` and `key.pem`.
 
+## 502 Bad Gateway or Permisson denied  
+If the nginx shows a "502 Bad Gateway" exception and `docker logs remote-api-tls` contains "connect() to unix:/var/run/docker.sock failed (13: Permission denied)" you'll need to edit permissions for the Docker daemon socket:  
+`chmod 666 /var/run/docker.sock`
 
 ## Works with Docker Maven Plugin  
 The configuration works great with [fabric8io's Docker Maven Plugin](https://github.com/fabric8io/docker-maven-plugin).  
