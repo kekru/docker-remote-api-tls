@@ -43,6 +43,14 @@ Here is a simple example configuration, where /home/me/my/cert/dir contains `cer
 						<alias>my-httpd</alias>
 						<name>httpd</name>
 					</image>
+					<image>
+						<alias>my-newimage</alias>
+						<name>newimage</name>
+						<build>
+							<dockerFile>${project.basedir}/src/test/resources/newimage/Dockerfile</dockerFile>
+							<compression>gzip</compression><!-- Use gzip here! -->
+						</build>
+					</image>
 				</images>
 				<dockerHost>https://my-website.org:2376</dockerHost>
 				<certPath>/home/me/my/cert/dir</certPath>
@@ -53,4 +61,5 @@ Here is a simple example configuration, where /home/me/my/cert/dir contains `cer
 </build>
 ```
 
-`mvn docker:start` starts the httpd via the remote API.
+`mvn docker:build` generates the "newimage" by Dockerfile via the remote API. Use gzip as compression here, if you get an exception.  
+`mvn docker:start` starts httpd and newimage.
