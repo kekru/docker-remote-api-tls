@@ -6,7 +6,7 @@ This is an alternative way, instead of configuring TLS on Docker directly.
 ## Create CA, certificates and keys  
 First you need a CA and certs and keys for your Docker server and the client.  
 Create them as shown here [Protect the Docker daemon socket](https://docs.docker.com/engine/security/https/).  
-Or create the files with this script [create-certs.sh](https://github.com/kekru/linux-utils/blob/master/cert-generate/create-certs.sh).
+Or create the files with this script [create-certs.sh](https://github.com/kekru/linux-utils/blob/master/cert-generate/create-certs.sh). Read [Create certificate files](https://gist.github.com/kekru/974e40bb1cd4b947a53cca5ba4b0bbe5#create-certificate-files) for information on how to use the script.
 
 ## Start Container  
 Copy the following files in a directory. The directory will me mounted in the container. 
