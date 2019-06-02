@@ -1,12 +1,11 @@
-FROM nginx:1.16.0-alpine
+FROM nginx:1.15.12-alpine
 LABEL MAINTAINER="Kevin Krummenauer <kevin@whiledo.de>"
 RUN apk add --no-cache openssl
 
 COPY resources /script
 
-RUN cp /script/nginx-cert.conf /etc/nginx/conf.d/nginx-cert.conf \
- && chmod +x /script/create-certs.sh /script/entrypoint.sh \
- && sed -i 's/user\s*nginx;/user root;/g' /etc/nginx/nginx.conf
+RUN cp /script/nginx-cert.conf /etc/nginx/nginx.conf \
+ && chmod +x /script/create-certs.sh /script/entrypoint.sh
 
 ENV CREATE_CERTS_WITH_PW="" \
     CERTS_DIR=/data/certs \

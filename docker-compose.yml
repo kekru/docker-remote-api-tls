@@ -2,12 +2,13 @@ version: "3.4"
 
 services:
   remote-api:
+    build: .
     image: whiledo/docker-remote-api-tls:temp
     ports:
      - 8443:443
     environment:
      - CREATE_CERTS_WITH_PW=supersecret
-     - CERT_HOSTNAME=myapp.example.com
+     - CERT_HOSTNAME=abc.127.0.0.1.nip.io
     volumes:
-     - ./certs:/data/certs:ro
+     - ./certs:/data/certs
      - /var/run/docker.sock:/var/run/docker.sock:ro
