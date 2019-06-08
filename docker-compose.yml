@@ -1,0 +1,35 @@
+x-sharedConfig: &sharedConfig
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "500k"
+      max-file: "10"
+
+x-sharedDeployConfig: &sharedDeployConfig
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 150M
+        reservations:
+          cpus: '0.1'
+          memory: 5M
+
+version: "3.4"
+
+services:
+  remote-api:
+    <<: *sharedConfig
+    image: kekru/docker-remote-api-tls:temp
+    ports:
+     - 8443:443
+    environment:
+     - CREATE_CERTS_WITH_PW=supersecret
+     - CERT_HOSTNAME=abc.127.0.0.1.nip.io
+    volumes:
+     - ./certs:/data/certs
+     - /var/run/docker.sock:/var/run/docker.sock:ro
+    deploy:
+      <<: *sharedDeployConfig
+      placement:
+        constraints:
+          - node.role == manager
