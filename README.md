@@ -40,7 +40,7 @@ Your Docker Remote API is available on port 2376 via https. The client needs to 
 
 ## Remote Api with auto generating CA, certificates and keys
 
-The docker-remote-api image can generate CA, certificates and keys for your.  
+The docker-remote-api image can generate CA, certificates and keys for you automatically.  
 Create a docker-compose.yml file, specifying a password and the hostname, on which the remote api will be accessible later on. The hostname will be written to the server's certificate.
 
 ```yml
@@ -58,7 +58,7 @@ services:
      - /var/run/docker.sock:/var/run/docker.sock:ro
 ```
 
-Now run the container with `docker-compose up -d` or `docker stack deploy --compose-file=docker-compose.yml remoteapi`.
+Now run the container with `docker-compose up -d` or `docker stack deploy --compose-file=docker-compose.yml remoteapi`.  
 Certificates will be creates in `<local cert dir>`.  
 You will find the client-certs in `<local cert dir>/client/`. The files are `ca.pem`, `cert.pem` and `key.pem`.  
 
