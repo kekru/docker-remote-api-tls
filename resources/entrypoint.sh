@@ -1,5 +1,8 @@
 #!/bin/sh
 
+[ -n $CERTS_PASSWORD_FILE ] \
+  && CREATE_CERTS_WITH_PW="$(cat $CERTS_PASSWORD_FILE)"
+
 if [ -n $CREATE_CERTS_WITH_PW ]; then
   if [ -z "$(ls -A $CERTS_DIR)" ]; then
 
@@ -18,7 +21,7 @@ if [ -n $CREATE_CERTS_WITH_PW ]; then
     chmod 444 $CERTS_DIR/client/key.pem
 
   else
-  
+
     echo "$CERTS_DIR is not empty. Not creating certs."
   fi
 fi
