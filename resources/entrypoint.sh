@@ -1,7 +1,9 @@
 #!/bin/sh
 
-[ -n $CERTS_PASSWORD_FILE ] \
-  && CREATE_CERTS_WITH_PW="$(cat $CERTS_PASSWORD_FILE)"
+if [ -n "$CERTS_PASSWORD_FILE" ]; then
+  echo "Using cert password from $CERTS_PASSWORD_FILE"
+  CREATE_CERTS_WITH_PW="$(cat $CERTS_PASSWORD_FILE)"
+fi
 
 if [ -n $CREATE_CERTS_WITH_PW ]; then
   if [ -z "$(ls -A $CERTS_DIR)" ]; then
