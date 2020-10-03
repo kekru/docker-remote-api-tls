@@ -32,7 +32,7 @@ public class IntegrationTest {
 
     File certsDir = new File("certs-integr-test");
     if (certsDir.exists()) {
-      FileUtils.deleteDirectory(certsDir);
+      FileUtils.cleanDirectory(certsDir);
     }
   }
 
