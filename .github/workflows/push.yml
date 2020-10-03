@@ -8,4 +8,4 @@ jobs:
       - name: Build
         run: cd test && docker-compose build
       - name: Test
-        run: cd test && docker-compose run tests
+        run: cd test && docker-compose run test

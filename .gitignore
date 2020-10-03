@@ -1,5 +1,6 @@
 cert-data
 certs
+certs-integr-test
 temp
 tmp
 .vscode
