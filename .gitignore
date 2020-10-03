@@ -1,3 +1,11 @@
 cert-data
 certs
 temp
+tmp
+.vscode
+.idea
+.classpath
+.project
+test/target
+test/.settings
+*.iml
