@@ -43,8 +43,6 @@ Your Docker Remote API is available on port 2376 via https. The client needs to 
 The docker-remote-api image can generate CA, certificates and keys for you automatically.
 Create a docker-compose.yml file, specifying a password and the hostname, on which the remote api will be accessible later on. The hostname will be written to the server's certificate.
 
-Optionally, the cert password can be provided as a docker secret. In this case use the `CERTS_PASSWORD_FILE` variable with the absolute path of secret file: `CERTS_PASSWORD_FILE=/run/secrets/<secret_name>`. If both `CREATE_CERTS_WITH_PW` and `CERTS_PASSWORD_FILE` are provided, `CERTS_PASSWORD_FILE` takes precedence.
-
 ```yml
 version: "3.4"
 services:
@@ -63,6 +61,22 @@ services:
 Now run the container with `docker-compose up -d` or `docker stack deploy --compose-file=docker-compose.yml remoteapi`.
 Certificates will be created in `<local cert dir>`.
 You will find the client-certs in `<local cert dir>/client/`. The files are `ca.pem`, `cert.pem` and `key.pem`.
+
+## Environment variables
+
+#### `CREATE_CERTS_WITH_PW`
+Passphrase to encrypt the certificate.
+
+#### `CERTS_PASSWORD_FILE`
+Certificate passphrase will be read from this docker secret. Absolute path of the secret file has to be provided i.e. `CERTS_PASSWORD_FILE=/run/secrets/<secret_name>`.
+
+If both passphrase and secret file are set, the secret file takes precedence.
+
+#### `CERT_EXPIRATION`
+Certificate expiration in days. If not set, the default value 365 is applied.
+
+#### `CERT_HOSTNAME`
+Domain name of the docker server.
 
 ## Setup client
 
