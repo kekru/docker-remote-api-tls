@@ -5,7 +5,7 @@ Test are written in JUnit and Maven
 Run with Maven: 
 
 ```bash
-mvn install
+./mvnw test
 ```
 
 Run with Docker-Compose

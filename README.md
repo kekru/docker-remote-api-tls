@@ -78,6 +78,6 @@ To test this repo quickly, clone this repo, then run
 ```bash
 # Start remote-api locally
 docker-compose up -d
-# Run ps ove rremote api (use GitBash when you are on Windows)
+# Run ps over remote api (use GitBash when you are on Windows)
 ./dockerRemote ps
 ```
