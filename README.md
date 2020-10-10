@@ -72,7 +72,7 @@ Certificate passphrase will be read from this docker secret. Absolute path of th
 
 If both passphrase and secret file are set, the secret file takes precedence.
 
-#### `CERT_EXPIRATION`
+#### `CERT_EXPIRATION_DAYS`
 Certificate expiration for server and client certs in days. If not set, the default value 365 is applied.
 
 #### `CA_EXPIRATION_DAYS`
