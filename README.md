@@ -99,3 +99,19 @@ docker-compose up -d
 # Run ps over remote api (use GitBash when you are on Windows)
 ./dockerRemote ps
 ```
+
+## Changelog
+
+#### v0.2.0
+
+First stable release  
+Thanks [@smiller171](https://github.com/smiller171) for contributing!
+
+#### v0.3.0
+
++ update nginx version
++ add configuration for cert expiration
++ add configuration to use swarm secret as password for cert generation
++ add automatic tests
+
+Thanks [@benkorichard](https://github.com/benkorichard) for contributing!
