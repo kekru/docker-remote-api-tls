@@ -33,7 +33,7 @@ public class IntegrationTest {
     shellExecutor = new ShellExecutor();
     //shellExecutor.execute("docker-compose down");
 
-    certsDir = new File("certs-integr-test/certs");
+    certsDir = new File("certs-integr-test");
     certsDirClient = new File(certsDir + "/client");
     if (certsDir.exists()) {
       FileUtils.cleanDirectory(certsDir);
@@ -69,7 +69,7 @@ public class IntegrationTest {
   private void copyGeneratedClientCertsToLocal() {
      String remoteApiContainerId = runDockerCompose("ps -q remote-api");
      shellExecutor.execute("docker cp " + remoteApiContainerId + ":/data/certs "
-         + certsDir.getParentFile().getAbsolutePath());
+         + certsDir.getAbsolutePath());
 
     assertThat(new File(certsDir + "/ca-cert.pem")).exists();
     assertThat(new File(certsDir + "/ca-key.pem")).exists();
