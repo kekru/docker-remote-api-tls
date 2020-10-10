@@ -18,7 +18,10 @@ public class WrongCertTest extends AbstractIntegrationTest {
 
   @BeforeClass
   public static void init() {
-    startRemoteApiContainer("CREATE_CERTS_WITH_PW=supersecret");
+    startRemoteApiContainer(
+        "CERT_HOSTNAME=abc.127.0.0.1.nip.io",
+        "CREATE_CERTS_WITH_PW=supersecret"
+    );
   }
 
   @Test

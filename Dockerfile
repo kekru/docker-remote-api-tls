@@ -9,7 +9,9 @@ RUN cp /script/nginx-cert.conf /etc/nginx/nginx.conf \
 
 ENV CREATE_CERTS_WITH_PW="" \
     CERTS_DIR=/data/certs \
-    CERT_HOSTNAME="myserver.example.com"
+    CERT_HOSTNAME="abc.127.0.0.1.nip.io" \
+    CERT_EXPIRATION_DAYS="365" \
+    CA_EXPIRATION_DAYS="900"
 
 ENTRYPOINT ["/script/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

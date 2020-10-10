@@ -73,10 +73,14 @@ Certificate passphrase will be read from this docker secret. Absolute path of th
 If both passphrase and secret file are set, the secret file takes precedence.
 
 #### `CERT_EXPIRATION`
-Certificate expiration in days. If not set, the default value 365 is applied.
+Certificate expiration for server and client certs in days. If not set, the default value 365 is applied.
+
+#### `CA_EXPIRATION_DAYS`
+Certificate expiration for CA in days. If not set, the default value 900 is applied.
 
 #### `CERT_HOSTNAME`
-Domain name of the docker server.
+Domain name of the docker server.  
+If you don't have a DNS name, you can use [nip.io](https://nip.io) to get a name for any IP.  
 
 ## Setup client
 
