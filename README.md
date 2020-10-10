@@ -27,7 +27,7 @@ Create a docker-compose.yml file:
 version: "3.4"
 services:
   remote-api:
-    image: kekru/docker-remote-api-tls:v0.2.0
+    image: kekru/docker-remote-api-tls:v0.3.0
     ports:
      - 2376:443
     volumes:
@@ -47,7 +47,7 @@ Create a docker-compose.yml file, specifying a password and the hostname, on whi
 version: "3.4"
 services:
   remote-api:
-    image: kekru/docker-remote-api-tls:v0.2.0
+    image: kekru/docker-remote-api-tls:v0.3.0
     ports:
      - 2376:443
     environment:
