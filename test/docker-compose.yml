@@ -6,8 +6,9 @@ services:
     image: kekru/docker-remote-api-tls:temp-for-unittests
     ports:
       - 30129:443
+    env_file:
+      - ./target/integr-test/remote-api.env
     environment:
-      - CREATE_CERTS_WITH_PW=supersecret
       - CERT_HOSTNAME=abc.127.0.0.1.nip.io
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"

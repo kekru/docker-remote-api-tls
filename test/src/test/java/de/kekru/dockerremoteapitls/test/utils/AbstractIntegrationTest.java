@@ -120,10 +120,13 @@ public class AbstractIntegrationTest {
     env.put("DOCKER_CERT_PATH", withForwardSlashes(certsDirClient));
 
     for (String entry : moreEnvs) {
-      env.put(
-          StringUtils.substringBefore(entry, "="),
-          StringUtils.substringAfter(entry, "=")
-      );
+      String key = StringUtils.substringBefore(entry, "=");
+      String value = StringUtils.substringAfter(entry, "=");
+      env.put(key, value);
+
+      if (StringUtils.isBlank(value)) {
+        env.remove(key);
+      }
     }
 
     return shellExecutor.execute(command, env);
