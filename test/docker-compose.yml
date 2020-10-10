@@ -10,12 +10,10 @@ services:
       - CREATE_CERTS_WITH_PW=supersecret
       - CERT_HOSTNAME=abc.127.0.0.1.nip.io
     volumes:
-      - "./certs-integr-test:/data/certs"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
   test:
     build: .
     volumes:
-      - "./certs-integr-test:/build/certs-integr-test"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     network_mode: "host"
