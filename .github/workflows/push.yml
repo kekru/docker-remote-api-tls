@@ -6,6 +6,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_BUILDKIT: 1
+          COMPOSE_PROJECT_NAME: remote-api-integr-test
         run: cd test && docker-compose build
       - name: Test
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_BUILDKIT: 1
+          COMPOSE_PROJECT_NAME: remote-api-integr-test
         run: cd test && docker-compose run test
