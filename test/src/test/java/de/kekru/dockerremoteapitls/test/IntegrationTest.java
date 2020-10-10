@@ -1,48 +1,18 @@
 package de.kekru.dockerremoteapitls.test;
 
-import de.kekru.dockerremoteapitls.test.utils.ShellExecutor;
-import java.io.File;
-import java.io.IOException;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import de.kekru.dockerremoteapitls.test.utils.AbstractIntegrationTest;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.commons.io.FileUtils;
-import static org.assertj.core.api.Assertions.*;
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public class IntegrationTest {
-
-  private static final Logger LOG_REMOTE_API = LoggerFactory.getLogger("Remote Api Container");
-  private static final Logger LOG = LoggerFactory.getLogger(IntegrationTest.class);
-  private static final String REMOTE_API_CONNECTION_STRING = "tcp://abc.127.0.0.1.nip.io:30129";
-
-
-  @Rule
-  public TemporaryFolder folder= new TemporaryFolder();
-  private ShellExecutor shellExecutor;
-  private File certsDir;
-  private File certsDirClient;
-
-
-  @Before
-  public void init() throws IOException {
-    shellExecutor = new ShellExecutor();
-    //shellExecutor.execute("docker-compose down");
-
-    certsDir = new File("certs-integr-test");
-    certsDirClient = new File(certsDir + "/client");
-    if (certsDir.exists()) {
-      FileUtils.cleanDirectory(certsDir);
-    }
-  }
+public class IntegrationTest extends AbstractIntegrationTest {
 
   @Test
   public void test() throws Exception {
 
+    runDockerCompose("build --progress=plain");
     runDockerCompose("up -d --force-recreate remote-api");
 
     Thread.sleep(5000);
@@ -54,29 +24,7 @@ public class IntegrationTest {
     env.put("DOCKER_CERT_PATH", certsDirClient.getAbsolutePath());
     shellExecutor.execute("docker ps", env);
 
+    assertThat("").isEqualTo("");
   }
 
-  private String runDockerCompose(String composeCommand) {
-    
-    Map<String, String> env = new HashMap<>();
-    env.put("COMPOSE_DOCKER_CLI_BUILD", "1");
-    env.put("DOCKER_BUILDKIT", "1");
-    env.put("COMPOSE_PROJECT_NAME","remote-api-integr-test");
-    //shellExecutor.execute("docker-compose build --progress=plain remote-api", env);
-    return shellExecutor.execute("docker-compose " + composeCommand, env);
-  }
-
-  private void copyGeneratedClientCertsToLocal() {
-     String remoteApiContainerId = runDockerCompose("ps -q remote-api");
-     shellExecutor.execute("docker cp " + remoteApiContainerId + ":/data/certs "
-         + certsDir.getAbsolutePath());
-
-    assertThat(new File(certsDir + "/ca-cert.pem")).exists();
-    assertThat(new File(certsDir + "/ca-key.pem")).exists();
-    assertThat(new File(certsDir + "/server-cert.pem")).exists();
-    assertThat(new File(certsDir + "/server-key.pem")).exists();
-    assertThat(new File(certsDirClient + "/ca.pem")).exists();
-    assertThat(new File(certsDirClient + "/cert.pem")).exists();
-    assertThat(new File(certsDirClient + "/key.pem")).exists();
-  }
 }
