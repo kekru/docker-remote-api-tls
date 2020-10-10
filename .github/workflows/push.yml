@@ -10,7 +10,7 @@ jobs:
           COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BUILDKIT: 1
           COMPOSE_PROJECT_NAME: test
-        run: cd test && echo "" > target/integr-test/remote-api.env && docker-compose build
+        run: cd test && mkdir -p target/integr-test && echo "" > target/integr-test/remote-api.env && docker-compose build
       - name: Test
         env:
           COMPOSE_DOCKER_CLI_BUILD: 1
