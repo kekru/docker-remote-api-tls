@@ -9,11 +9,11 @@ jobs:
         env:
           COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BUILDKIT: 1
-          COMPOSE_PROJECT_NAME: remote-api-integr-test
+          COMPOSE_PROJECT_NAME: test
         run: cd test && docker-compose build
       - name: Test
         env:
           COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BUILDKIT: 1
-          COMPOSE_PROJECT_NAME: remote-api-integr-test
+          COMPOSE_PROJECT_NAME: test
         run: cd test && docker-compose run test

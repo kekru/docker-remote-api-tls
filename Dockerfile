@@ -13,3 +13,9 @@ ENV CREATE_CERTS_WITH_PW="" \
 
 ENTRYPOINT ["/script/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
+
+HEALTHCHECK --start-period=1s \
+            --interval=5s \
+            --timeout=5s \
+            --retries=12 \
+            CMD nc -vz localhost 443 || exit 1
