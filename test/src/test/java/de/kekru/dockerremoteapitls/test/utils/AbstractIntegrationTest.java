@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,7 @@ public class AbstractIntegrationTest {
       FileUtils.cleanDirectory(certsDir);
     }
     certsDir.mkdirs();
+    writeEnvFile(Collections.emptyList());
 
     runDockerCompose("stop remote-api");
   }

@@ -14,7 +14,7 @@ import org.apache.commons.io.IOUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class IntegrationTest extends AbstractIntegrationTest {
+public class BasicConnectionTest extends AbstractIntegrationTest {
 
   @BeforeClass
   public static void init() {
@@ -59,35 +59,6 @@ public class IntegrationTest extends AbstractIntegrationTest {
     // Then
     assertThat(exception)
         .hasMessageContaining("error during connect: Get http://abc.127.0.0.1.nip.io:30129/v1.40/containers/json: EOF");
-  }
-
-  @Test
-  public void failsOnModifiedClientCert() throws Exception {
-    // Given
-    copyResourceToFile("/some-client-cert.pem",
-        new File(certsDirClient + "/cert.pem"));
-    copyResourceToFile("/some-client-key.pem",
-         new File(certsDirClient + "/key.pem"));
-
-    // When
-    RuntimeException exception = assertThrows(RuntimeException.class, () ->
-        runOverRemoteApi("docker ps")
-    );
-
-    // Then
-    assertThat(exception)
-        .hasMessageContaining("error during connect:");
-    assertThat(exception)
-        .hasMessageContaining("failed to retrieve context tls info: tls: private key does not match public key");
-  }
-
-  private void copyResourceToFile(String resourceFile, File clientCert) throws IOException {
-    try (InputStream in = getClass().getResourceAsStream(resourceFile);
-        OutputStream out = new FileOutputStream(clientCert)) {
-
-      Objects.requireNonNull(in, "no resourcefile found for " + resourceFile);
-      IOUtils.copy(in, out);
-    }
   }
 
 }
