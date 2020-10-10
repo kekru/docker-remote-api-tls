@@ -1,7 +1,5 @@
 #!/bin/sh
 
-CERT_EXPIRATION_DAYS=${CERT_EXPIRATION:-365}
-
 if [ -n "$CERTS_PASSWORD_FILE" ]; then
   echo "Using cert password from $CERTS_PASSWORD_FILE"
   CREATE_CERTS_WITH_PW="$(cat $CERTS_PASSWORD_FILE)"
@@ -11,7 +9,7 @@ if [ -n $CREATE_CERTS_WITH_PW ]; then
   if [ -z "$(ls -A $CERTS_DIR)" ]; then
 
     echo "Create CA cert"
-    /script/create-certs.sh -m ca -pw $CREATE_CERTS_WITH_PW -t $CERTS_DIR -e 900
+    /script/create-certs.sh -m ca -pw $CREATE_CERTS_WITH_PW -t $CERTS_DIR -e $CA_EXPIRATION_DAYS
     echo "Create server cert"
     /script/create-certs.sh -m server -h $CERT_HOSTNAME -pw $CREATE_CERTS_WITH_PW -t $CERTS_DIR -e $CERT_EXPIRATION_DAYS
     echo "Create client cert"
@@ -29,5 +27,3 @@ if [ -n $CREATE_CERTS_WITH_PW ]; then
     echo "$CERTS_DIR is not empty. Not creating certs."
   fi
 fi
-
-exec "$@"

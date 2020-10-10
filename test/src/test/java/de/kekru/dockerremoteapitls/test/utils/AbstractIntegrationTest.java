@@ -27,17 +27,14 @@ public class AbstractIntegrationTest {
 
   @ClassRule
   public static TemporaryFolder folder = new TemporaryFolder();
-  protected static ShellExecutor shellExecutor = new ShellExecutor();
-  protected static File certsDir;
-  protected static File certsDirClient;
-  protected static File remoteApiEnvFile;
+  protected static final ShellExecutor shellExecutor = new ShellExecutor();
+  protected static final File certsDir = new File("target/integr-test/certs");
+  protected static final File certsDirClient = new File(certsDir + "/client");
+  protected static final File remoteApiEnvFile = new File("target/integr-test/remote-api.env");
 
 
   @BeforeClass
   public static void initTests() throws IOException {
-    remoteApiEnvFile = new File("target/integr-test/remote-api.env");
-    certsDir = new File("target/integr-test/certs");
-    certsDirClient = new File(certsDir + "/client");
     if (certsDir.exists()) {
       FileUtils.cleanDirectory(certsDir);
     }

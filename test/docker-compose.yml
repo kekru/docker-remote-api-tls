@@ -8,8 +8,6 @@ services:
       - 30129:443
     env_file:
       - ./target/integr-test/remote-api.env
-    environment:
-      - CERT_HOSTNAME=abc.127.0.0.1.nip.io
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
