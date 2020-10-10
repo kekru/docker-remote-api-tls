@@ -27,5 +27,3 @@ if [ -n $CREATE_CERTS_WITH_PW ]; then
     echo "$CERTS_DIR is not empty. Not creating certs."
   fi
 fi
-
-exec "$@"
