@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  remote-api:
+    build: ..
+    image: kekru/docker-remote-api-tls:temp-for-unittests
+    ports:
+      - 30129:443
+    env_file:
+      - ./target/integr-test/remote-api.env
+    environment:
+      - CERT_HOSTNAME=abc.127.0.0.1.nip.io
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  test:
+    build: .
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    network_mode: "host"

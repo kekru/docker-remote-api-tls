@@ -67,3 +67,17 @@ You will find the client-certs in `<local cert dir>/client/`. The files are `ca.
 ## Setup client
 
 See [Run commands on remote Docker host](https://gist.github.com/kekru/4e6d49b4290a4eebc7b597c07eaf61f2) for instructions how to setup a client to communicate with the remote api.
+
+You can also reuse [dockerRemote](./dockerRemote) and set url and path in it to your correct values.  
+Then just run `./dockerRemote ps` to call `ps` against your remote api.
+
+## Quick test
+
+To test this repo quickly, clone this repo, then run
+
+```bash
+# Start remote-api locally
+docker-compose up -d
+# Run ps over remote api (use GitBash when you are on Windows)
+./dockerRemote ps
+```

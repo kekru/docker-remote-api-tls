@@ -19,7 +19,7 @@ version: "3.4"
 services:
   remote-api:
     <<: *sharedConfig
-    image: kekru/docker-remote-api-tls:temp
+    build: .
     ports:
      - 8443:443
     environment:
