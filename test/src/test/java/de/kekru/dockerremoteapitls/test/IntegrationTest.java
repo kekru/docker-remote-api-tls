@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.io.FileUtils;
+import static org.assertj.core.api.Assertions.*;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -69,5 +70,13 @@ public class IntegrationTest {
      String remoteApiContainerId = runDockerCompose("ps -q remote-api");
      shellExecutor.execute("docker cp " + remoteApiContainerId + ":/data/certs "
          + certsDir.getParentFile().getAbsolutePath());
+
+    assertThat(new File(certsDir + "/ca-cert.pem")).exists();
+    assertThat(new File(certsDir + "/ca-key.pem")).exists();
+    assertThat(new File(certsDir + "/server-cert.pem")).exists();
+    assertThat(new File(certsDir + "/server-key.pem")).exists();
+    assertThat(new File(certsDirClient + "/ca.pem")).exists();
+    assertThat(new File(certsDirClient + "/cert.pem")).exists();
+    assertThat(new File(certsDirClient + "/key.pem")).exists();
   }
 }
