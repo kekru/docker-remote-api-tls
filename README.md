@@ -115,3 +115,7 @@ Thanks [@smiller171](https://github.com/smiller171) for contributing!
 + add automatic tests
 
 Thanks [@benkorichard](https://github.com/benkorichard) for contributing!
+
+#### v0.4.0
+
++ update nginx version to 1.20.2

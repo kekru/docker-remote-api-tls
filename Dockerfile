@@ -1,5 +1,5 @@
-# Original Dockerfile: https://github.com/nginxinc/docker-nginx/tree/5488180ebdd45b12b45107694dfa92dc878a2795/stable/alpine
-FROM nginx:1.18.0-alpine
+# Original Dockerfile: https://github.com/nginxinc/docker-nginx/blob/b0e153a1b644ca8b2bd378b14913fff316e07cf2/stable/alpine/Dockerfile
+FROM nginx:1.20.2-alpine
 LABEL MAINTAINER="Kevin Krummenauer <kevin@whiledo.de>"
 RUN apk add --no-cache openssl
 
