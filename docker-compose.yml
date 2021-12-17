@@ -12,7 +12,7 @@ x-sharedDeployConfig: &sharedDeployConfig
           memory: 150M
         reservations:
           cpus: '0.1'
-          memory: 5M
+          memory: 10M
 
 version: "3.4"
 
