@@ -4,6 +4,8 @@ This images makes you publish your Docker Remote API by a container.
 A client must authenticate with a client-TLS certificate.
 This is an alternative way, instead of [configuring TLS on Docker directly](https://gist.github.com/kekru/974e40bb1cd4b947a53cca5ba4b0bbe5).
 
+[![dockeri.co](https://dockerico.blankenship.io/image/kekru/docker-remote-api-tls)](https://hub.docker.com/r/kekru/docker-remote-api-tls)
+
 ## Remote Api with external CA, certificates and key
 
 First you need a CA and certs and keys for your Docker server and the client.
