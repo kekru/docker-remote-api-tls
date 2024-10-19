@@ -10,7 +10,7 @@ if [ -n "$CERTS_PASSWORD_FILE" ]; then
   CREATE_CERTS_WITH_PW="$(cat $CERTS_PASSWORD_FILE)"
 fi
 
-if [ -n $CREATE_CERTS_WITH_PW ]; then
+if [ -n "$CREATE_CERTS_WITH_PW" ]; then
   if [ -z "$(ls -A $CERTS_DIR)" ]; then
 
     echo "Create CA cert"
@@ -31,4 +31,7 @@ if [ -n $CREATE_CERTS_WITH_PW ]; then
 
     echo "$CERTS_DIR is not empty. Not creating certs."
   fi
+
+else  
+  echo "CREATE_CERTS_WITH_PW is not set. Not creating certs."
 fi
