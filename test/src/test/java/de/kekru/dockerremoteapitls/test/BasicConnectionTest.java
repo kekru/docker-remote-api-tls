@@ -57,7 +57,7 @@ public class BasicConnectionTest extends AbstractIntegrationTest {
 
     // Then
     assertThat(exception)
-        .hasMessageContaining("error during connect: Get http://abc.127.0.0.1.nip.io:30129/v1.40/containers/json: EOF");
+        .hasMessageContaining("error during connect: Get \"http://abc.127.0.0.1.nip.io:30129/v1.47/containers/json\"");
   }
 
   @Test

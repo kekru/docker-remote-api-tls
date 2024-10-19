@@ -1,5 +1,3 @@
-version: '3.4'
-
 services:
   remote-api:
     build: ..
@@ -12,6 +10,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
   test:
+    pull_policy: build
     build: .
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"

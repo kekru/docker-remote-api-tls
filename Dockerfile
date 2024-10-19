@@ -19,4 +19,4 @@ HEALTHCHECK --start-period=1s \
             --interval=5s \
             --timeout=5s \
             --retries=12 \
-            CMD nc -vz localhost 443 || exit 1
+            CMD nc -vz 127.0.0.1 443 || exit 1
