@@ -1,5 +1,10 @@
 #!/bin/sh
 #see https://docs.docker.com/engine/security/https/
+set -e
+
+if [ "$DEBUG" = "true" ]; then
+  set -x
+fi
 
 EXPIRATIONDAYS=700
 CASUBJSTRING="/C=GB/ST=London/L=London/O=ExampleCompany/OU=IT/CN=example.com/emailAddress=test@example.com"

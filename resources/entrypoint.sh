@@ -1,4 +1,9 @@
 #!/bin/sh
+set -e
+
+if [ "$DEBUG" = "true" ]; then
+  set -x
+fi
 
 if [ -n "$CERTS_PASSWORD_FILE" ]; then
   echo "Using cert password from $CERTS_PASSWORD_FILE"
