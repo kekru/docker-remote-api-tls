@@ -29,7 +29,7 @@ Create a docker-compose.yml file:
 version: "3.4"
 services:
   remote-api:
-    image: kekru/docker-remote-api-tls:v0.4.0
+    image: kekru/docker-remote-api-tls:v0.5.0
     ports:
      - 2376:443
     volumes:
@@ -49,7 +49,7 @@ Create a docker-compose.yml file, specifying a password and the hostname, on whi
 version: "3.4"
 services:
   remote-api:
-    image: kekru/docker-remote-api-tls:v0.4.0
+    image: kekru/docker-remote-api-tls:v0.5.0
     ports:
      - 2376:443
     environment:
@@ -121,3 +121,7 @@ Thanks [@benkorichard](https://github.com/benkorichard) for contributing!
 #### v0.4.0
 
 + update nginx version to 1.20.2
+
+#### v0.5.0
+
++ update nginx version to 1.26.2

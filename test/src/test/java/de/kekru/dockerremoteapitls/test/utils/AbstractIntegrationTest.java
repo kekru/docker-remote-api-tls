@@ -70,7 +70,7 @@ public class AbstractIntegrationTest {
     env.put("DOCKER_BUILDKIT", "1");
     env.put("COMPOSE_PROJECT_NAME", "test");
     //shellExecutor.execute("docker-compose build --progress=plain remote-api", env);
-    return shellExecutor.execute("docker-compose " + composeCommand, env);
+    return shellExecutor.execute("docker compose " + composeCommand, env);
   }
 
   protected static void waitForHealthy() {
@@ -85,7 +85,7 @@ public class AbstractIntegrationTest {
 
         String output = runDockerCompose("ps remote-api");
 
-        if (output.contains("Up (healthy)")) {
+        if (output.contains("(healthy)")) {
           return;
         }
       }

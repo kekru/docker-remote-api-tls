@@ -1,5 +1,5 @@
 # Original Dockerfile: https://github.com/nginxinc/docker-nginx/blob/b0e153a1b644ca8b2bd378b14913fff316e07cf2/stable/alpine/Dockerfile
-FROM nginx:1.20.2-alpine
+FROM nginx:1.26.2-alpine
 LABEL MAINTAINER="Kevin Krummenauer <kevin@whiledo.de>"
 RUN apk add --no-cache openssl
 
@@ -19,4 +19,4 @@ HEALTHCHECK --start-period=1s \
             --interval=5s \
             --timeout=5s \
             --retries=12 \
-            CMD nc -vz localhost 443 || exit 1
+            CMD nc -vz 127.0.0.1 443 || exit 1

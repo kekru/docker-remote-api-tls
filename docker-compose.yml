@@ -14,11 +14,10 @@ x-sharedDeployConfig: &sharedDeployConfig
           cpus: '0.1'
           memory: 10M
 
-version: "3.4"
-
 services:
   remote-api:
     <<: *sharedConfig
+    pull_policy: build
     build: .
     ports:
      - 8443:443
